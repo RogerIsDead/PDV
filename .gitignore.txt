@@ -1,0 +1,24 @@
+# === BACKEND (Java / Maven / Spring Boot) ===
+/target
+*.iml
+*.class
+*.log
+
+# === IDEs ===
+/.idea
+*.swp
+*.swo
+*.bak
+*.tmp
+*.project
+*.classpath
+*.settings
+
+# === SOs ===
+.DS_Store
+Thumbs.db
+
+# === Arquivos sensíveis ===
+application.properties
+application.yml
+src/main/java/META-INF/persistence.xml

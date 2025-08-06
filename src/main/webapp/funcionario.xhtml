@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Funcionario</title>
+
+<style>
+	body{
+	font-size: 17px;
+	background-image: url(http://localhost:8080/projetoFinal/resources/image/background.jpg);
+	}
+	#container{
+	background-color:white;
+	display:content;
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    border: 5px solid black;
+    }
+    #cadastro{
+    	margin-left: 55px;
+    	width: 700px;
+    	height: 650px;
+    }
+    #produtos{
+    	width: 800px;
+    }
+    .input{
+    margin-top: 20px;
+    	.output{
+    	height: 20px;
+    	width: 80px;
+    	border-radius: 5px;
+    	background-color: white;
+    	font-size: 20px;
+    	}
+    	.inputText{
+    	width: 400px;
+    	height: 30px;
+    	border-radius: 5px;
+    	margin-right: 40px;
+    	margin-left: 45px;
+    	font-size: 20px;
+    	}
+    }
+    
+    #buttons{
+    margin-top: 50px;
+    margin-left: 70px;
+    	
+    
+    }
+  
+   	.commandLink{
+   		font-familiy: Arial, sans-serif;
+   		text-decoration: none;
+   		color: inherit;
+   		font-size:25px;
+   		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    background-color: #b12626de;
+	    width:200px;
+	    height:40px; 
+	    border: 2px solid black;
+	    border-radius: 5px;
+	    margin-bottom: 30px;
+	    margin-right: 30px;
+	    	.commandImg{
+	    		margin-left: 15px;
+	    	}
+   			
+   	}
+   	
+   	.commandLink:hover{
+    	background: linear-gradient(to borrom, #ffffff 50%, #7d8c81 40%);
+    	background-color: #ffffff;
+    	
+    }
+   	
+   	
+    	
+    .commandB{
+    width:200px;
+    height:40px;
+    font-size:22px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    margin-right: 80px;
+
+    }
+    .commandB:hover{
+    	background: linear-gradient(to borrom, #0a0a0a 50%, #7d8c81 40%);
+    	background-color: #0a0a0a;
+    	color: white;
+    }
+    .commandEdit{
+    	font-size:17px;
+	    width: 75px;
+	    height:30px;
+	    border-radius: 5px;
+    }
+     .commandEdit:hover{
+    	background: linear-gradient(to borrom, #0a0a0a 50%, #7d8c81 40%);
+    	background-color: #0a0a0a;
+    	color: white;
+    }
+    
+    .barra{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 4fr 4fr 4fr 4fr 4fr;
+    grid-row: red;
+    background-color: black;
+	    .item2{
+	    text-align: center;
+	    font-size: 130%;
+	    margin-bottom: 7px;
+	    margin-top: 12px;
+	}
+		.botaoBarra{
+	    background-color: black;
+	    border: 0px;
+	    width: 90%;
+	    height: 100%;
+	    font-size: 20px;
+	    border-radius: 10px;
+	}
+	
+	.botaoBarra:hover{
+	    background-color: rgb(46, 44, 44);
+	}
+	a{
+		margin-left: 20px;
+	
+	}
+	
+
+}
+
+
+
+</style>
+
+
+</h:head>
+
+<h:body>
+
+<div class="barra">
+      <a href="http://localhost:8080/projetoFinal/menuAdmin.html"><h:graphicImage value="http://localhost:8080/projetoFinal/resources/image/logo_barra.png" width="45"></h:graphicImage></a>
+      <div class="item2"><a href="cardapio.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Cardapio</font></button></a></div>
+      <div class="item2"><a href="usuario.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Usuario</font></button></a></div>
+      <div class="item2"><a href="venda.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Venda</font></button></a></div>
+      <div class="item2"><a href="funcionario.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Funcionario</font></button></a></div>
+      <div class="item2"><a href="produtos.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Estoque</font></button></a></div>
+      <div class="item2"><a href="cliente.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Clientes</font></button></a></div>   
+</div>
+
+<h:form id="formCardapio">
+	<div id="container">
+			<h:panelGrid id="esquerdaDireita" columns="2" width="500" frame="none" border="1">		
+			<h:panelGroup>	
+			<div id="cadastro">
+				<h2	style="text-align:center">Adicionar Funcionario</h2>
+				<h:panelGrid rows="2">
+					<h:panelGroup>
+						<h:panelGrid columns="2" class="input">
+							<h:outputLabel class="output" value="Nome:"/>
+							<h:inputText id="campoNome" class="inputText" value="#{funcionarioBean.funcionario.nome}" style="margin-left: 44px"/>
+						</h:panelGrid>
+						<br/>
+						<h:panelGrid columns="2" class="input" >
+							<h:outputLabel class="output" value="Email:"/>
+							<h:inputText id="campoEmail" class="inputText" value="#{funcionarioBean.funcionario.email}" style="margin-left: 45px"/>
+						</h:panelGrid>
+						<br/>
+						<h:panelGrid columns="2" class="input">
+							<h:outputLabel class="output" value="Endereço:"/>
+							<h:inputText id="campoEndereco" class="inputText" value="#{funcionarioBean.funcionario.endereco}" style="margin-left: 18px"/>
+						</h:panelGrid>
+						<br/>
+						<h:panelGrid columns="2" class="input">
+							<h:outputLabel class="output" value="Telefone:"/>
+							<h:inputText id="campoTelefone" class="inputText" value="#{funcionarioBean.funcionario.telefone}" style="margin-left: 23px"/>
+						</h:panelGrid>
+						<br/>
+						<h:panelGrid columns="2" class="input">
+							<h:outputLabel class="output" value="Função"/>
+							<h:inputText id="campoFuncao" class="inputText" value="#{funcionarioBean.funcionario.funcao}" style="margin-left: 40px"/>
+						</h:panelGrid>
+						<br/>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<div id="buttons">
+							<h:panelGrid columns="2">
+							<h:panelGroup>
+							<div class="conjuntoCommandB" >
+								<h:commandLink class="commandLink" action="#{funcionarioBean.inserirFuncionario}">
+									Inserir
+									<h:graphicImage class="commandImg" value="/resources/image/salvar-arquivo.png" style="vertical-align: middle;" width="25" height="25"/>		
+								</h:commandLink>
+							</div>
+							</h:panelGroup>
+							<h:panelGroup>
+							<div class="conjuntoCommandB" >
+								<h:commandLink class="commandLink" action="#{funcionarioBean.inserirFuncionario}">
+									Atualizar
+								    <h:graphicImage class="commandImg" value="/resources/image/atualizar.png" style="vertical-align: middle;" width="25" height="25" />
+								</h:commandLink>
+							</div>
+							</h:panelGroup>
+							<h:panelGroup>
+							<div class="conjuntoCommandB" >
+								<h:commandLink class="commandLink" action="#{funcionarioBean.removerFuncionario}">
+									Remover
+									<h:graphicImage class="commandImg" value="/resources/image/trashblack.png" style="vertical-align: middle;" width="25" height="25"/>		
+								</h:commandLink>
+							</div>
+							</h:panelGroup>
+							<h:panelGroup>
+							<div class="conjuntoCommandB" >
+								<h:commandLink class="commandLink" action="#{funcionarioBean.limparFuncionario}">
+									Limpar
+								    <h:graphicImage class="commandImg" value="/resources/image/limpar.png" style="vertical-align: middle;" width="25" height="25" />
+								</h:commandLink>
+							</div>
+							</h:panelGroup>
+							</h:panelGrid>
+						</div>
+					</h:panelGroup>
+				
+				</h:panelGrid>
+				</div>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+				<div id="produtos">
+					
+					<h:messages/>
+					<p:dataTable frozenColumns="2" scrollable="true" scrollHeight="500" value="#{funcionarioBean.funcionarios}" var="funcionario" border="5" columnClasses="column1,column2,column3,column4,column5">
+						<f:facet width="50" name="header">
+							<h3>Funcionarios</h3>
+							</f:facet>
+						<p:column>
+							<f:facet name="header">
+							ID
+							</f:facet>
+							<h:outputText value="#{funcionario.idFuncionario}"/>
+						</p:column>
+						<p:column width="30">
+							<f:facet name="header">
+							Nome
+							</f:facet>
+							<h:outputText value="#{funcionario.nome}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+							Email
+							</f:facet>
+							<h:outputText value="#{funcionario.email}"/>
+						</p:column>
+						<p:column width="125">
+							<f:facet name="header">
+							Endereço
+							</f:facet>
+							<h:outputText value="#{funcionario.endereco}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+							Telefone
+							</f:facet>
+							<h:outputText value="#{funcionario.telefone}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+							Função
+							</f:facet>
+							<h:outputText value="#{funcionario.funcao}"/>
+						</p:column>
+						<p:column width ="70">
+								<h:commandButton class="commandEdit" value="Editar" >
+									<f:setPropertyActionListener value="#{funcionario}" target="#{funcionarioBean.funcionario}"/>
+								</h:commandButton>
+						</p:column>	
+					</p:dataTable>	
+				</div>
+				</h:panelGroup>
+				</h:panelGrid>
+				
+						
+				
+				
+	</div>	
+</h:form>
+	
+
+	
+	<h:button class="commandEdit" value="Venda" outcome="venda.xhtml"/>
+	
+</h:body>
+</html>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Venda</title>
+<style>
+	body{
+	font-size: 17px;
+	background-image: url(http://localhost:8080/projetoFinal/resources/image/background.jpg);
+	}
+	#container{
+	background-color:white;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    border: 5px solid black;
+    }
+    #cadastro{
+    	
+    	width: 830px;
+    	height: 760px;
+    	
+    }
+    #produtos{
+    	width: 830px;
+    }
+    .input{
+    margin-left: 40px;
+    margin-top: 30px;
+    	.output{
+    	height: 20px;
+    	width: 80px;
+    	border-radius: 5px;
+    	background-color: white;
+    	font-size: 20px;
+    	}
+    	.inputText{
+    	width: 400px;
+    	height: 30px;
+    	border-radius: 5px;
+    	margin-left: 45px;
+    	font-size: 20px;
+    	}
+    }
+    
+    #buttons{
+    margin-top: 80px;
+    margin-left: 10px
+    
+    }
+  
+   	.commandLink{
+   		font-familiy: Arial, sans-serif;
+   		text-decoration: none;
+   		color: inherit;
+   		font-size:25px;
+   		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    background-color: #b12626de;
+	    width:200px;
+	    height:40px; 
+	    border: 2px solid black;
+	    border-radius: 5px;
+	    margin-bottom: 30px;
+	    margin-right: 30px;
+	    	.commandImg{
+	    		margin-left: 15px;
+	    	}
+   			
+   	}
+   	
+   	.commandLink:hover{
+    	background: linear-gradient(to borrom, #ffffff 50%, #7d8c81 40%);
+    	background-color: #ffffff;
+    	
+    }
+   	
+   	
+    .commandEdit{
+    	font-size:17px;
+	    width: 75px;
+	    height:30px;
+	    border-radius: 5px;
+    }
+     .commandEdit:hover{
+    	background: linear-gradient(to borrom, #0a0a0a 50%, #7d8c81 40%);
+    	background-color: #0a0a0a;
+    	color: white;
+    }
+    
+    .barra{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 4fr 4fr 4fr 4fr 4fr;
+    grid-row: red;
+    background-color: black;
+	    .item2{
+	    text-align: center;
+	    font-size: 130%;
+	    margin-bottom: 7px;
+	    margin-top: 12px;
+	}
+		.botaoBarra{
+	    background-color: black;
+	    border: 0px;
+	    width: 90%;
+	    height: 100%;
+	    font-size: 20px;
+	    border-radius: 10px;
+	}
+	
+	.botaoBarra:hover{
+	    background-color: rgb(46, 44, 44);
+	}
+	a{
+		margin-left: 20px;
+	
+	}
+	
+
+}
+
+	
+</style>
+
+<script type="text/javascript">
+        window.onload = function () {
+            var campoData = document.getElementById('formVenda:campoData');
+            var today = new Date();
+            var day = String(today.getDate()).padStart(2, '0');
+            var month = String(today.getMonth() + 1).padStart(2, '0'); // Janeiro é 0
+            var year = today.getFullYear();
+            campoData.value = day + '-' + month + '-' + year;
+            campoData.readOnly = true;
+        };
+    </script>
+
+</h:head>
+
+
+<h:body>
+
+<div class="barra">
+      <a href="http://localhost:8080/projetoFinal/menuAdmin.html"><h:graphicImage value="http://localhost:8080/projetoFinal/resources/image/logo_barra.png" width="45"></h:graphicImage></a>
+      <div class="item2"><a href="cardapio.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Cardapio</font></button></a></div>
+      <div class="item2"><a href="usuario.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Usuario</font></button></a></div>
+      <div class="item2"><a href="venda.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Venda</font></button></a></div>
+      <div class="item2"><a href="funcionario.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Funcionario</font></button></a></div>
+      <div class="item2"><a href="produtos.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Estoque</font></button></a></div>
+      <div class="item2"><a href="cliente.xhtml"><button class="botaoBarra"><font color="#BFD1D9">Clientes</font></button></a></div>   
+</div>
+
+
+<h:form id="formVenda">
+	<div id="container">
+		<h:panelGrid id="esquerdaDireita" columns="2" border="1">
+			<h:panelGroup>
+			<div id="cadastro">
+				<h:panelGrid id="panelClienteCardapio" rows = "2">
+					<h:panelGroup style="width: 100px">
+						<h3 style="text-align:center">Realizar Vendas</h3>
+						<div class="input">
+						<h:outputLabel class="output" style="margin-left:10px;margin-right:36px" value="Cliente:"/>
+						<p:selectOneMenu id="clienteDropdown" value="#{vendaBean.venda.idCliente}" style="width: 410px;height: 33px;border-radius: 5px;font-size: 20px;margin-left: 20px;border: 2px solid black;">
+                                <f:selectItem itemLabel="Selecione um Cliente" itemValue="" />
+                                <f:selectItems value="#{clienteBean.clientes}" var="cliente"
+                                               itemValue="#{cliente.idCliente}"
+                                               itemLabel="#{cliente.nome}" />
+                        </p:selectOneMenu>
+						</div>
+						<div class="input">
+						<h:outputLabel class="output" style="margin-left:10px;margin-right:36px" value="Usuário:"/>
+						<p:selectOneMenu class="usuarioDropdown" id="usuarioDropdown" value="#{vendaBean.venda.idUsuario}" style="width: 410px;height: 33px;border-radius: 5px;font-size: 20px;margin-left: 15px;border: 2px solid black;">
+                                <f:selectItem itemLabel="Selecione um Usuário" itemValue="" />
+                                <f:selectItems value="#{usuarioBean.usuarios}" var="usuario"
+                                               itemValue="#{usuario.idUsuario}"
+                                               itemLabel="#{usuario.emailAcesso}" />
+                        </p:selectOneMenu>
+						</div>
+					
+						<div class="input">
+						<h:outputLabel class="output" style="margin-left:10px;margin-right:53px" value="Data:"/>
+						<h:inputText readonly="true" class="inputText" id="campoData" value="#{vendaBean.venda.data}" style="margin-left: 23px;" >
+							<f:convertDateTime pattern = "dd-MM-yyyy"  type="date" timeZone="America/Sao_Paulo"/>
+						</h:inputText>
+						</div>
+						<div class="input">
+						<h:outputLabel class="output" style="margin-left:10px;margin-right:10px" value="Valor Total:"/>
+						<h:inputText class="inputText" id="campoValorTotal" value="#{vendaBean.venda.valorPedido}" readonly="true" style="margin-left: 15px;"/>
+						</div>
+						
+						<h:panelGroup>
+							<div id="buttons">
+								<h:panelGrid columns="3">
+									<h:panelGroup>
+										<div class="conjuntoCommandB" >
+											<h:commandLink class="commandLink" action="#{vendaBean.inserirVenda}">
+											Inserir
+											<h:graphicImage class="commandImg" value="/resources/image/salvar-arquivo.png" width="25" height="25"/>	
+											 <f:actionListener binding="#{cardapioBean.limparCarrinho()}" />	
+											</h:commandLink>
+										</div>
+									</h:panelGroup>
+									<h:panelGroup>
+										<div class="conjuntoCommandB" >
+											<h:commandLink class="commandLink" action="#{vendaBean.limparVenda}">
+											Limpar
+									   		 <h:graphicImage class="commandImg" value="/resources/image/limpar.png" width="25" height="25" />
+									   		  <f:actionListener binding="#{cardapioBean.limparCarrinho()}" />
+											</h:commandLink>
+										</div>
+									</h:panelGroup>
+									<h:panelGroup>
+										<div class="conjuntoCommandB" >
+											<h:commandLink class="commandLink" action="visualizarVenda.xhtml" style="margin-left: 125px; background-color: #9ade72;">
+											 <f:actionListener binding="#{cardapioBean.limparCarrinho()}" />
+											Visualizar Vendas
+											</h:commandLink>
+										</div>
+									</h:panelGroup>
+									</h:panelGrid>
+								</div>
+								<h:panelGroup>	
+									<p:dataTable value="#{cardapioBean.carrinho}" var="cardapioSelecionado" scrollable="true" scrollHeight="160" style="width: 825px; margin-left: 1px;">
+										<f:facet name="header">
+											<h3>CARRINHO</h3>
+										</f:facet>	
+										<p:column>
+											<f:facet name="header">
+							  				PRODUTO
+											</f:facet>
+											<h:outputText value="#{cardapioSelecionado.nomeProduto}"/>
+										</p:column>
+										<p:column>
+											<f:facet name="header">
+										  		VALOR
+											</f:facet>
+											<h:outputText value="#{cardapioSelecionado.valor}"/>
+										</p:column>
+										<p:column>
+											<h:commandButton class="btn" value="Remover" action="#{cardapioBean.removerCarrinho(cardapioSelecionado)}">
+												<f:actionListener binding="#{vendaBean.removerProduto(cardapioSelecionado.valor)}" />
+											</h:commandButton>
+										</p:column>	
+									</p:dataTable>
+							</h:panelGroup>
+							
+						
+					</h:panelGroup>
+				</h:panelGroup>
+		</h:panelGrid>		
+		</div>			
+		</h:panelGroup>
+		<h:panelGroup>	
+			<div id="produtos">
+			<p:dataTable value="#{cardapioBean.cardapios}" var="cardapio" scrollable="true" scrollHeight="500">
+				<f:facet name="header">
+					<h3>PRODUTOS</h3>
+				</f:facet>
+				<p:column>
+					<f:facet name="header">
+				  		NOME
+					</f:facet>
+					<h:outputText value="#{cardapio.nomeProduto}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+				  		VALOR
+					</f:facet>
+					<h:outputText value="#{cardapio.valor}"/>
+				</p:column>
+				<p:column>
+					<h:commandButton class="btn" value="Adicionar" action = "#{cardapioBean.adicionarCarrinho}">
+						<f:setPropertyActionListener target="#{cardapioBean.cardapioSelecionado}" value="#{cardapio}" />
+						<f:actionListener binding="#{vendaBean.adicionarProduto(cardapio.valor)}" />	
+					</h:commandButton>
+				</p:column>	
+			</p:dataTable>
+			<h:messages/>
+			</div>
+		</h:panelGroup>		
+	</h:panelGrid>
+</div>	
+</h:form>
+
+	
+	
+</h:body>
+</html>

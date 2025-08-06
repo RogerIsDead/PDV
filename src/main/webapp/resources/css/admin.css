@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+header{
+    background-color: black;
+     width: 100%;
+     h1{
+         color: #c10a0a;
+         text-transform: uppercase;
+        
+     }
+     h2{
+         color: #BFD1D9;
+         text-transform: uppercase;
+     }
+ 
+ }
+
+ .img{
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.item2{
+    text-align: center;
+    margin-bottom: 7px;
+    font-size: 130%;
+    margin-top: 12px;
+}
+
+.barra{
+	display: grid;
+    grid-template-columns:10% 80% 10%;
+    grid-row: red;
+
+}
+
+.botaoBarra{
+    background-color: black;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+    font-size: 90%;
+    border-radius: 10px;  
+}
+
+.botaoBarra:hover{
+    background-color: rgb(46, 44, 44);
+}
+
+
+a:link{
+    color: black;
+
+}
+a:visited {
+  color: black;
+}
+
+body{
+    background-image: url(C:\Users\Computador\Desktop\PI\ProjetoFinal\src\main\webapp\resources\image\background.jpg);
+}
+.container1{
+    border: 2px solid #F5F5DC;
+    margin-right: 2%;
+    margin-left: 10%;
+    border-radius: 5px;
+    background-color: #b12626de;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img{
+        
+        width: 20%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 40px;
+    }
+
+    div{
+        margin-top: 25px;
+        opacity: 0;
+        transition-property: all;
+        transition-duration: 0.5s;
+    }
+
+    &:hover div{
+        opacity: 1;
+        margin-left: 10px;
+    }
+    &:hover img{
+        margin-right: 10px;
+    }
+}
+
+.pagina{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+.item1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 130%;
+    a{
+        text-decoration: none;
+    }
+}
